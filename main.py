@@ -29,13 +29,27 @@ def ask_number():
 
         print("1, 2, 3 중에서 입력하세요.")
 
+# 승패 판정 
+# 1 - 1 / 2 - 2 / 3 - 3 무승부 조건 
+# 1 - 3 / 2 - 1 / 3 - 2 플레이어 승리 조건
+def check_result(user_number, computer_number):
+    # 무승부 조건 
+    if user_number == computer_number:
+        return "무승부"
+
+    # 플레이어 승리 조건 
+    if user_number == 1 and computer_number == 3: return "승리" # 가위 / 보
+    if user_number == 2 and computer_number == 1: return "승리" # 바위 / 가위
+    if user_number == 3 and computer_number == 2: return "승리" # 보 / 바위
+
+    return "패배"
 
 
+ 
 # 게임의 전체 루프
 def main():
     show_title()
     name = ask_name() 
-
 
     user_number = ask_number()
     computer_number = random.randint(1, 3)  # 1,2,3
