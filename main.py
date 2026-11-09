@@ -18,11 +18,26 @@ def ask_name():
 
     return name 
 
+# 플레이어 번호 입력 
+def ask_number():
+    while True:   # 무한 루프 생성 시, True 입력 
+        print("1. 가위 / 2. 바위 / 3. 보")
+        answer = input("번호를 입력하세요. : ").strip()
+
+        if answer in ("1", "2", "3"):
+            return int(answer)
+
+        print("1, 2, 3 중에서 입력하세요.")
+
+
+
 # 게임의 전체 루프
 def main():
     show_title()
     name = ask_name() 
 
+
+    user_number = ask_number()
     computer_number = random.randint(1, 3)  # 1,2,3
     print(f"{name}님, 컴퓨터는 {HANDS[computer_number]}를 냈습니다.")
 
