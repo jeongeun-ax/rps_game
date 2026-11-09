@@ -77,6 +77,19 @@ def show_records(recodes):
     for number, record in enumerate(recodes, start=1):
         print(f"{number}판: {record}")
 
+# 게임 재시작 여부 
+def ask_play_again():
+    while True:
+        answer = input("\n다시 도전 (yes/no) : ").strip().lower()
+        if answer == "yes" or answer == "y":
+            return True
+        if answer == "no" or answer == "n":
+            return False
+
+        print("yes 또는 no 입력해주세요.")
+
+
+
 # 게임 루프 (3판 2선승제)
 def play_game(name): 
     my_wins = 0
@@ -108,6 +121,12 @@ def main():
     show_title()
     name = ask_name() 
     play_game(name)
+
+    while True:
+        if not ask_play_again():
+            break
+
+    print("게임을 종료합니다.")
 
 
 # 게임 시작
