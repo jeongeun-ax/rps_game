@@ -114,15 +114,29 @@ def play_game(name):
 
     show_final_result(name, my_wins, computer_wins)
     show_records(records)
+    # 플레이어가 승리하면 True 
+    return my_wins == GOAL_WINS
 
  
 # 게임의 전체 루프
 def main():
     show_title()
     name = ask_name() 
+    # 연승 기록을 위한 변수 
+    co_wins = 0
 
     while True:
-        play_game(name)
+        my_won = play_game(name)
+        if my_won: 
+            co_wins += 1   # 연승기록 누적 
+            print(f"\n현재 연승: {co_wins}연승")    # 0 연승이면 출력하지 않는 것 (방법 1)
+        else: 
+            co_wins = 0    # 연승기록 초기화 
+
+        #if co_wins > 0:                            # 0 연승이면 출력하지 않는 것 (방법 2)
+        #    print(f"\n현재 연승: {co_wins}연승")
+
+
         if not ask_play_again():
             break
 
